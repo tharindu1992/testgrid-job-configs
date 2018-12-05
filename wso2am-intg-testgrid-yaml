@@ -9,9 +9,10 @@ infrastructureConfig:
   parameters:
     - JDK : ORACLE_JDK8
   includes:
-    - OPEN_JDK8
-    - CentOS
-    - mysql
+    - OpenJDK-8
+    - CentOS-7.5
+    - CentOS-7.4
+    - MySQL-5.7
   provisioners:
     - name: prod-wso2am-intg-deployment
       remoteRepository: "https://github.com/wso2/testgrid"
@@ -55,4 +56,3 @@ scenarioConfigs:
       LATEST_PRODUCT_RELEASE_API: https\://wso2.org/jenkins/job/products/job/product-apim_2.x/lastRelease/api/
       LATEST_PRODUCT_BUILD_ARTIFACTS_API: https://wso2.org/jenkins/job/products/job/product-apim_2.x/lastStableBuild/mavenArtifacts/api/
       keyFileLocation: "/testgrid/testgrid-home/testgrid-key.pem"
-
