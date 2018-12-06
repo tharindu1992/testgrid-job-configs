@@ -9,7 +9,7 @@ infrastructureConfig:
   parameters:
     - JDK : ORACLE_JDK8
   includes:
-    - OpenJDK-8
+    - OracleJDK-8
     - CentOS-7.5
     - Ubuntu-18.04
     - MySQL-5.7
