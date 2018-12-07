@@ -1,27 +1,25 @@
 # TestGrid Test Configuration Parameters
 # TODO use dash as the separator instead of camelCase.
 version: '0.9'
-emailToList: "yasassri@wso2.com"
+emailToList: "tharindusa@wso2.com"
 infrastructureConfig:
   iacProvider: CLOUDFORMATION
   infrastructureProvider: AWS
   containerOrchestrationEngine: None
   parameters:
-    - JDK : ORACLE_JDK8
+    - JDK : OPEN_JDK8
   includes:
-    - OracleJDK-8
+    - OpenJDK-8
     - CentOS-7.5
+    - RHEL-7.4
     - Windows-2016
-    - RHEL-7.2
-    - CentOS-7.5
-    - Ubuntu-18.04
     - MySQL-5.7
   provisioners:
-    - name: prod-wso2am-intg-deployment
+    - name: prod-wso2ei-intg-deployment
       remoteRepository: "https://github.com/wso2/testgrid"
       description: Provision Infra for running intg tests
       scripts:
-        - name: 'prod-wso2am-intg-deployment'
+        - name: 'prod-wso2ei-intg-deployment'
           description: ''
           type: CLOUDFORMATION
           file: jobs/intg-test-resources/wso2-intg-test-cfn.yaml
@@ -32,55 +30,33 @@ infrastructureConfig:
             DBClass: "db.m4.large"
             EC2KeyPair: "deployment-prod"
             ALBCertificateARN: "arn:aws:acm:us-east-1:809489900555:certificate/2ab5aded-5df1-4549-9f7e-91639ff6634e"
-            ProductName: "wso2-apim"
+            ProductName: "wso2-ei"
+
 scenarioConfigs:
-  - testType: TESTNG
-    remoteRepository: "https://github.com/wso2/apim-test-integration.git"
-    name: firstconfig
+  - remoteRepository: "https://github.com/wso2/ei-test-integration.git"
+    testType: TESTNG
+    name: integration-tests
     description: "integration tests"
     file: integration-tests/run-scenario.sh
     inputParameters:
-      PRODUCT_CODE: wso2am
-      PRODUCT_GIT_URL: "https://github.com/wso2/product-apim"
-      PRODUCT_DIST_DOWNLOAD_API: https\://wso2.org/jenkins/job/products/job/product-apim_2.x/lastRelease/api/
-      INFRA_LOCATION: workspace/testgrid"
+      PRODUCT_CODE: wso2ei
+      PRODUCT_GIT_URL: https://github.com/wso2/product-ei
+      INFRA_LOCATION: workspace/testgrid
       DEPLOYMENT_LOCATION: workspace/testgrid
-      SCENARIOS_LOCATION: workspace/apim-test-integration
+      SCENARIOS_LOCATION: workspace/ei-test-integration
       REMOTE_WORKSPACE_DIR_UNIX: /opt/testgrid/workspace
       REMOTE_WORKSPACE_DIR_WINDOWS: c:/testgrid/workspace
       SQL_DRIVERS_LOCATION_UNIX: /opt/testgrid/sql-drivers/
       SQL_DRIVERS_LOCATION_WINDOWS: /testgrid/sql-drivers
       DBUsername: wso2carbon
       TEST_MODE: RELEASE
-      USE_CUSTOM_TESTNG: "FALSE"
-      WUM_PRODUCT_VERSION: 2.6
+      PRODUCT_GIT_BRANCH: master
+      LATEST_PRODUCT_RELEASE_API: https://wso2.org/jenkins/job/products/job/product-ei/lastRelease/api/
+      LATEST_PRODUCT_BUILD_ARTIFACTS_API: https://wso2.org/jenkins/job/products/job/product-ei/lastStableBuild/mavenArtifacts/api/
+      USE_CUSTOM_TESTNG: FALSE
       WUM_CHANNEL: full
-      PRODUCT_GIT_BRANCH: "2.x"
-      LATEST_PRODUCT_RELEASE_API: https\://wso2.org/jenkins/job/products/job/product-apim_2.x/lastRelease/api/
-      LATEST_PRODUCT_BUILD_ARTIFACTS_API: https://wso2.org/jenkins/job/products/job/product-apim_2.x/lastStableBuild/mavenArtifacts/api/
+      WUM_PRODUCT_VERSION: 2.5.0
+      PRODUCT_DIST_DOWNLOAD_API: https://wso2.org/jenkins/job/products/job/product-ei/lastRelease/api/
+      productDistDownloadApi: https://wso2.org/jenkins/job/products/job/product-ei/lastRelease/api/
       keyFileLocation: "/testgrid/testgrid-home/testgrid-key.pem"
-  - testType: TESTNG
-    remoteRepository: "https://github.com/wso2/apim-test-integration.git"
-    name: secondConfig
-    description: "integration tests"
-    file: integration-tests/run-scenario.sh
-    inputParameters:
-      PRODUCT_CODE: wso2am
-      PRODUCT_GIT_URL: "https://github.com/wso2/product-apim"
-      PRODUCT_DIST_DOWNLOAD_API: https\://wso2.org/jenkins/job/products/job/product-apim_2.x/lastRelease/api/
-      INFRA_LOCATION: workspace/testgrid"
-      DEPLOYMENT_LOCATION: workspace/testgrid
-      SCENARIOS_LOCATION: workspace/apim-test-integration
-      REMOTE_WORKSPACE_DIR_UNIX: /opt/testgrid/workspace
-      REMOTE_WORKSPACE_DIR_WINDOWS: c:/testgrid/workspace
-      SQL_DRIVERS_LOCATION_UNIX: /opt/testgrid/sql-drivers/
-      SQL_DRIVERS_LOCATION_WINDOWS: /testgrid/sql-drivers
-      DBUsername: wso2carbon
-      TEST_MODE: RELEASE
-      USE_CUSTOM_TESTNG: "FALSE"
-      WUM_PRODUCT_VERSION: 2.6
-      WUM_CHANNEL: full
-      PRODUCT_GIT_BRANCH: "2.x"
-      LATEST_PRODUCT_RELEASE_API: https\://wso2.org/jenkins/job/products/job/product-apim_2.x/lastRelease/api/
-      LATEST_PRODUCT_BUILD_ARTIFACTS_API: https://wso2.org/jenkins/job/products/job/product-apim_2.x/lastStableBuild/mavenArtifacts/api/
-      keyFileLocation: "/testgrid/testgrid-home/testgrid-key.pem"
+
