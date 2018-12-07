@@ -12,6 +12,7 @@ infrastructureConfig:
     - OracleJDK-8
     - CentOS-7.5
     - Windows-2016
+    - RHEL-7.2
     - CentOS-7.5
     - Ubuntu-18.04
     - MySQL-5.7
