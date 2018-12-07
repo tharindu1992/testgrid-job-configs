@@ -11,6 +11,8 @@ infrastructureConfig:
   includes:
     - OracleJDK-8
     - CentOS-7.5
+    - Windows-2016
+    - CentOS-7.5
     - Ubuntu-18.04
     - MySQL-5.7
   provisioners:
