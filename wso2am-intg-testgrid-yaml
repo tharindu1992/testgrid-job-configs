@@ -19,7 +19,7 @@ infrastructureConfig:
       remoteRepository: "https://github.com/wso2/testgrid"
       description: Provision Infra for running intg tests
       scripts:
-        - name: 'prod-wso2ei-intg-deployment'
+        - name: 'tharindu-test'
           description: ''
           type: CLOUDFORMATION
           file: jobs/intg-test-resources/wso2-intg-test-cfn.yaml
