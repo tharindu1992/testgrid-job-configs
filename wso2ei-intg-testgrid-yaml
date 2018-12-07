@@ -9,17 +9,17 @@ infrastructureConfig:
   parameters:
     - JDK : OPEN_JDK8
   includes:
-    - OPEN_JDK8
-    - CentOS-7.5
+    - OpenJDK-8
     - RHEL-7.4
     - Windows-2016
+    - CentOS-7.5
     - MySQL-5.7
   provisioners:
     - name: prod-wso2ei-intg-deployment
       remoteRepository: "https://github.com/wso2/testgrid"
       description: Provision Infra for running intg tests
       scripts:
-        - name: 'tharindu-test'
+        - name: 'prod-wso2ei-intg-deployment'
           description: ''
           type: CLOUDFORMATION
           file: jobs/intg-test-resources/wso2-intg-test-cfn.yaml
@@ -59,4 +59,3 @@ scenarioConfigs:
       PRODUCT_DIST_DOWNLOAD_API: https://wso2.org/jenkins/job/products/job/product-ei/lastRelease/api/
       productDistDownloadApi: https://wso2.org/jenkins/job/products/job/product-ei/lastRelease/api/
       keyFileLocation: "/testgrid/testgrid-home/testgrid-key.pem"
-
