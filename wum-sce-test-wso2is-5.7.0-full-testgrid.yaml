@@ -29,14 +29,6 @@ infrastructureConfig:
             DBUsername: "wso2carbon"
             ElasticSearchEndpoint: "https://search-testgrid-prod-hn2zfvehc7i2edigkxnfjljc6y.us-east-1.es.amazonaws.com"
             InternalPrepareForTest: "True"
-        - name: 'prod-wso2is-samples-deployment'
-          description: ''
-          type: CLOUDFORMATION
-          file: is-samples/test-is-samples.yml
-          inputParameters:
-            AMI: "ami-01b72d1b13ca0b4bc"
-            KeyPairName: "deployment-prod"
-            ProductVersion: "5.7.0"
 scenarioConfigs:
   - testType: TESTNG
     remoteRepository: "https://github.com/wso2/product-is.git"
