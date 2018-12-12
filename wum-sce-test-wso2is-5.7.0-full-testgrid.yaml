@@ -14,7 +14,7 @@ infrastructureConfig:
      - OracleJDK-8
   provisioners:
     - name: two-node-deployment
-      remoteRepository: "https://github.com/wso2/aws-is.git"
+      remoteRepository: "https://github.com/tharindu1992/aws-is.git"
       description: Provision Infra for running intg tests
       scripts:
         - name: 'prod-wso2is-scenarios-deployment'
